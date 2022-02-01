@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: tapc_development
+
+  
+test:
+  <<: *default
+  database: tapc_test
+
+
+production:
+  <<: *default
+  database: tapc_production
+  username: tapc
+  password: <%= ENV['TAPC_DATABASE_PASSWORD'] %>
