@@ -8,8 +8,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(params.require(:blog).permit(:content))
-    redirect_to new_post_path
+    @post = Post.new(post_params)
+    if @post.save
+      # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
+      redirect_to posts_path, notice: "つぶやきを作成しました！"
+    else
+      # 入力フォームを再描画します。
+      render :new
+    end
   end
 
   def show
