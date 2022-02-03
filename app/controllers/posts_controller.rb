@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to posts_path, notice: "ブログを編集しました！"
+      redirect_to posts_path, notice: "つぶやきを編集しました！"
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice:"ブログを削除しました！"
+    redirect_to posts_path, notice:"つぶやきを削除しました！"
   end
 
   private
