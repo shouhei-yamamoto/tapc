@@ -1,21 +1,35 @@
-<h1>つぶやき一覧</h1>
-<p><%= notice %></p>
-
-<table>
-  <tr>
-    <th>内容</th>
-  </tr>
-
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.content %></td>
-    <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
-    <td><%= link_to "つぶやきを編集する", edit_post_path(post.id), data: { confirm: '本当に編集していいですか？' } %></td>
-    <td><%= link_to 'つぶやきを削除する', post_path(post.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br>
-
-<%= link_to '新しくつぶやきを投稿する', new_post_path %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"> 
+    <link rel="stylesheet" href="./stylesheets/application.css"> 
+  </head>
+  <body>
+    <header class = "header">  
+      <h1>つぶやき一覧</h1>
+    </header>
+    <div class = "task">
+      <p><%= notice %></p>
+    </div>
+    <div class = "main">
+      <table align = "center">
+        <tr>
+          <th>内容</th>
+        </tr>
+        <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.content %></td>
+          <td><%= link_to '詳細を確認する', post_path(post.id) %></td>
+          <td><%= link_to "つぶやきを編集する", edit_post_path(post.id), data: { confirm: '本当に編集していいですか？' } %></td>
+          <td><%= link_to 'つぶやきを削除する', post_path(post.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+        </tr>
+        <% end %>
+      </table>
+      <br>
+      <%= link_to '新しくつぶやきを投稿する', new_post_path %>
+    </div>
+  </body>
+  <footer class = "footer">
+    <p>WEF2201 shouhei-yamamoto</p>
+  </footer>
+</html>
