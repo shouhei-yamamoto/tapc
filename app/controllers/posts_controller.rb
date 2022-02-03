@@ -10,16 +10,27 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
       redirect_to posts_path, notice: "つぶやきを作成しました！"
     else
-      # 入力フォームを再描画します。
       render :new
     end
   end
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to posts_path, notice: "ブログを編集しました！"
+    else
+      render :edit
+    end
   end
 
   private
